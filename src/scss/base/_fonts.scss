@@ -1,6 +1,6 @@
 @use "../utils/variables" as var;
 
-$fonts: var.$font-weights;
+$fonts: var.$font-weights; // імпорт мапи в змінну
 
 @each $key, $value in $fonts {
   @font-face {

@@ -1,12 +1,13 @@
 @use "mixins" as mx;
 
+//placeholder - шаблон основого заголовку
 %main-title {
   font-size: 24px;
   font-weight: 700;
-  line-height: 1.66;
-  letter-spacing: 0.02em;
+  line-height: 1.66; // ( font-size(24px)/ line-height(40px)=1.66)
+  letter-spacing: 0.02em; //( font-size(24px)/ letter-spacing(0.5px)=0.02em)
 }
-
+//шаблон заголовку секції
 %section-title {
   font-size: 20px;
   font-weight: 600;

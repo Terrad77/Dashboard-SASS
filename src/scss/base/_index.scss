@@ -1,4 +1,5 @@
-@forward "fonts";
-@forward "base";
-@forward "reset";
-@forward "visually-hidden";
+//@forward упрощает совместное использование миксинов и функций, нет named import as "..."
+@forward "fonts"; // 1.шрифти
+@forward "reset"; // 2.скидання стилів браузера
+@forward "base"; // 3.додаванння типових стилів елементам
+@forward "visually-hidden"; // 4.додатковий класс

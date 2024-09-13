@@ -1,11 +1,12 @@
 {
-  "name": "vite-sass-app-template",
+  "name": "dashboard",
+  "discription": "vite-sass-app",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/sass-code/",
+    "build": "vite build --base=/Dashboard-SASS/",
     "preview": "vite preview",
     "watch": "npx vite build --watch"
   },
@@ -13,7 +14,9 @@
     "cover 99.5%"
   ],
   "devDependencies": {
+    "ansi-colors": "^4.1.3",
     "autoprefixer": "^10.4.4",
+    "fancy-log": "^2.0.0",
     "fast-glob": "^3.3.1",
     "imagemin": "^8.0.1",
     "imagemin-webp": "^8.0.0",
@@ -26,6 +29,9 @@
   },
   "dependencies": {
     "body-scroll-lock": "^4.0.0-beta.0",
-    "uuid": "^10.0.0"
+    "graceful-fs": "^4.2.11",
+    "gsap": "^3.12.5",
+    "uuid": "^10.0.0",
+    "vinyl-fs": "^3.0.3"
   }
 }

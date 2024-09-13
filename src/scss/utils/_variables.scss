@@ -1,3 +1,4 @@
+// список з точками перелому
 $breakpoints: (
   "sm": 375px,
   "md": 768px,
@@ -33,6 +34,7 @@ $paddings: (
   "xl": 20px,
 );
 
+// спиок відступів між елементами
 $spacers: (
   "sm": 24px,
   "md": 32px,
@@ -40,8 +42,10 @@ $spacers: (
   "xl": 68px,
 );
 
+// основний шрифт, або (список) для декількох
 $main-font: "Montserrat";
 
+// мапа -список значень жирності
 $font-weights: (
   "Regular": 400,
   "Medium": 500,
@@ -56,6 +60,7 @@ $font-sizes: (
   "xl": 24px,
 );
 
+// мапа ефектів для керування анімацією
 $easings: (
   "fast": 300ms ease,
   "slow": 600ms ease,

@@ -1,18 +1,23 @@
 @use "sass:map";
-@use "sass:list";
+@use "sass:list"; // імпорт модуля списків
 
 @use "variables" as var;
 @use "functions" as fn;
 
+// міксин "media query" для breakpoints
 @mixin mq($bp: sm, $type: min, $is-retina: false) {
+  // перевірка чи  має map "$breakpoints" key = "$bp"
   @if map.has-key(var.$breakpoints, $bp) {
+    // імпортуємо в змінну $width значення з map
     $width: map.get(var.$breakpoints, $bp);
-
+    // for change media query
     @if $type == max {
+      // отримаємо наближенне значення width
       $width: $width - 0.02px;
     }
-
+    // формуємо медіа-запит
     @media only screen and (#{$type}-width: $width) {
+      // перевірка на щільність px for retina
       @if $is-retina {
         @media (min-device-pixel-ratio: 2),
           (min-resolution: 192dpi),
@@ -24,30 +29,34 @@
       }
     }
   } @else {
-    @error "";
+    @error "Not find the key in map $breakpoints ";
   }
 }
 
+// міксин для зміни border-radius та розмірів
 @mixin frame($width, $height: $width, $is-circle: false) {
   width: $width;
   height: $height;
 
+  // для обгортки зображення
   @if $is-circle {
     border-radius: 50%;
     overflow: hidden;
   }
-
+  // для зображення
   img {
     object-fit: cover;
     object-position: top center;
   }
 }
 
+// міксин стилізації кастомного scrollbar
 @mixin scroll-bar {
+  // псевдоелемент -webkit-scrollbar
   &::-webkit-scrollbar {
     width: 14px;
   }
-
+  // track - "рельса" scrollbar
   &::-webkit-scrollbar-track {
     background-color: transparent;
     border-radius: 100px;
@@ -56,7 +65,7 @@
       background-color: rgba(#fff, 0.3);
     }
   }
-
+  // thumb - "слайдер-повзунок" scrollbar
   &::-webkit-scrollbar-thumb {
     background-color: fn.get-color("light-secondary");
     background-clip: content-box;
@@ -68,8 +77,9 @@
     }
   }
 }
-
+// міксин стилізації анімацій ($ease -приймає типи анімації описані у мапі $easings, $properties... - змінна що збирає в список всі властивості)
 @mixin ease($ease, $properties...) {
+  // перевірка за ключем, чи має мапа тип анімації
   @if map.has-key(var.$easings, $ease) {
     $ease: map.get(var.$easings, $ease);
 
@@ -77,11 +87,12 @@
   } @else {
     @warn "The variable $ease is not defined";
   }
-
+  // перевірка $properties за довжиною, чи передано інші параметри
   @if list.length($properties) > 0 {
     transition-property: $properties;
   }
 }
+
 @mixin badge-base() {
   display: inline-block;
   min-width: 96px;

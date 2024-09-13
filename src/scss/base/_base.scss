@@ -4,8 +4,9 @@
 @use "../utils/mixins" as mx;
 
 body {
+  // розширення селектора шаблоном (../utils//placeholders/ %main-text)
   @extend %main-text;
-
+  //для фуллбеку додамо, sans-serif - як запасний інший шрифт бе засічок
   font-family: var.$main-font, sans-serif;
   color: fn.get-color("light-secondary");
   background-color: fn.get-color("dark-primary");
@@ -16,7 +17,7 @@ button {
   color: fn.get-color("current");
   cursor: pointer;
 }
-
+// скидання дефолтного стилю маркерів у тега summary
 summary {
   list-style-type: none;
 }
