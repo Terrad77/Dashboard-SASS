@@ -1,12 +1,13 @@
+// перевірка чи існує тип в $btn-types
 @if index($btn-types, primary) {
   /* ==Primary == */
   .btn--primary {
     background-color: #f07f2e;
-
+    //поведінка для тач-пристроїв без hover
     &:active {
       background-color: #d14a00;
     }
-
+    //поведінка для пристроїв з підтримкою hover
     @media (hover: hover) {
       &:hover,
       &:focus {
@@ -14,7 +15,7 @@
         box-shadow: 0px 4px 10px 0px rgba(240, 127, 46, 0.25);
       }
     }
-
+    // перевіпка чи елемент має атрибут disabled
     &[disabled] {
       background-color: #b5b5be;
     }

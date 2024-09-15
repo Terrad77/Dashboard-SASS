@@ -23,6 +23,7 @@
   overflow: visible;
   cursor: pointer;
 
+  //for <button> text in span
   .btn-inner {
     font-size: $btn-text-size;
     font-weight: $btn-text-weight;
@@ -30,6 +31,7 @@
     letter-spacing: #{calc($btn-text-spacing / $btn-text-size)}em;
   }
 
+  //for icon <button>
   .btn-icon {
     fill: currentColor;
   }
