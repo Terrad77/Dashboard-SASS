@@ -1,18 +1,18 @@
-@use '../utils/placeholders';
-@use '../utils/variables' as var;
-@use '../utils/functions' as fn;
-@use '../utils/mixins' as mx;
+@use "../utils/placeholders";
+@use "../utils/variables" as var;
+@use "../utils/functions" as fn;
+@use "../utils/mixins" as mx;
 
 .logo {
-  @extend %main-title;
+  @extend %main-title; // оформлення тексту за %шаблоном
 
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 20px;
-  color: fn.get-color('accent-primary');
-
-  @include mx.mq('lg') {
+  color: fn.get-color("accent-primary");
+  // media query for width from 1200px
+  @include mx.mq("lg") {
     padding: 16px 20px;
   }
 }

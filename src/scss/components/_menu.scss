@@ -1,20 +1,22 @@
-@use '../utils/placeholders';
-@use '../utils/variables' as var;
-@use '../utils/functions' as fn;
-@use '../utils/mixins' as mx;
+@use "../utils/placeholders";
+@use "../utils/variables" as var;
+@use "../utils/functions" as fn;
+@use "../utils/mixins" as mx;
 
 .menu {
+  //for desktop
   position: relative;
   width: 100%;
   height: 100%;
 
-  background-color: fn.get-color('dark-primary');
+  background-color: fn.get-color("dark-primary");
 
-  @include mx.mq('lg', 'max') {
-    @include mx.ease('fast', transform);
+  // медіа запит для екранів до 1200px
+  @include mx.mq("lg", "max") {
+    @include mx.ease("fast", transform);
     max-width: 248px;
     transform: translateX(-100%);
-
+    //while menu is open
     .sidebar.is-open & {
       transform: translateX(0);
       transition-delay: 300ms;
@@ -24,11 +26,11 @@
 
 .menu-list {
   border-top: 1px solid;
-  border-color: fn.get-color('dark-tertiary');
+  border-color: fn.get-color("dark-tertiary");
 }
 .menu-link {
   @extend %details;
-  @include mx.ease('fast', color);
+  @include mx.ease("fast", color);
 
   position: relative;
   display: flex;
@@ -38,14 +40,15 @@
 
   &:hover,
   &:focus {
-    color: fn.get-color('light-primary');
+    color: fn.get-color("light-primary");
   }
-
+  // стилі заголовка меню для поточної сторінки
   &.current {
-    color: fn.get-color('light-primary');
+    color: fn.get-color("light-primary");
 
+    // кастомний елемент індикації поточного заголовка
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
       left: 0;
@@ -56,13 +59,14 @@
       height: 32px;
 
       border-radius: 0px 100px 100px 0px;
-      background-color: fn.get-color('light-primary');
+      background-color: fn.get-color("light-primary");
     }
   }
 }
 .menu-icon {
-  fill: fn.get-color('current');
+  fill: fn.get-color("current");
 }
+
 .menu-notification {
   margin-left: auto;
 }
