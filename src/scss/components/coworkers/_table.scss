@@ -3,14 +3,18 @@
 @use '../../utils/functions' as fn;
 @use '../../utils/mixins' as mx;
 
+//таблиця секції co-workers
 .co-workers-table {
-  width: 100%;
+  width: 98%; // 98% ширини блока для залишення відступу з scroll-bar
 
+  // не відображати таблицю до "md": 768px
   @include mx.mq('md', 'max') {
     display: none;
   }
 
+  // заголовок таблиці
   caption {
+    // розширюємо шаблоном стилів
     @extend %details;
 
     margin-bottom: 36px;
@@ -20,9 +24,9 @@
       @extend %accent-text;
     }
   }
-
+  //тіло шапки таблиці
   thead {
-    position: sticky;
+    position: sticky; //закріплено позицію шапки таблиці
     top: -1px;
     z-index: 100;
     background-color: fn.get-color('dark-tertiary');
@@ -31,15 +35,18 @@
       background-color: fn.get-color('dark-secondary');
     }
 
+    // table header - заголовок таблиці)
     th {
       @extend %details-accent;
 
       position: relative;
       padding: 12px 20px;
-      border-bottom-width: 1px;
+      border-bottom-width: 1px; //  резервуємо border width для подальшого кращего позиціювання підкреслення ячейки
 
       color: fn.get-color('light-primary');
+      font-weight: 400;
 
+      // кастомне підкреслення рядка
       &::after {
         content: '';
         position: absolute;
@@ -47,7 +54,7 @@
         bottom: 0;
 
         display: block;
-        width: 100%;
+        width: 100%; // псевдоелемент на всю ширину рядка th
         height: 1px;
 
         background-color: fn.get-color('light-tertiary');
@@ -56,18 +63,19 @@
           background-color: fn.get-color('dark-tertiary');
         }
       }
-
+      // перша ячейка у рядку th - заголовка таблиці
       &:first-child {
         text-align: center;
       }
     }
   }
-
+  // тіло таблиці
   tbody {
     @extend %details;
 
     color: fn.get-color('light-secondary');
 
+    // table data - ячейка таблиці
     td {
       position: relative;
 
@@ -93,9 +101,10 @@
       }
     }
   }
-
+  // елемент рамки avatar
   .thumb {
     @include mx.frame(24px, $is-circle: true);
     margin: 0 auto;
+    border: solid 1px fn.get-color('light-secondary');
   }
 }

@@ -1,14 +1,15 @@
-@use '../utils/placeholders';
-@use '../utils/variables' as var;
-@use '../utils/functions' as fn;
-@use '../utils/mixins' as mx;
+@use "../utils/placeholders";
+@use "../utils/variables" as var;
+@use "../utils/functions" as fn;
+@use "../utils/mixins" as mx;
 
-@use 'btn/btn' as btn with (
+//with - ключевое слово для настройки импортированного модуля и переопределения значений
+@use "btn/btn" as btn with (
   $btn-layer-spacing: 4px
 );
 
 .welcome {
-  grid-area: welcome;
+  grid-area: welcome; //присваивает элемент определенной области сетки, позволяя разместить его в заранее определенном разделе сетки.
 
   display: flex;
   flex-wrap: wrap;
@@ -23,13 +24,14 @@
     display: block;
     margin-bottom: 8px;
 
-    color: fn.get-color('light-primary');
+    color: fn.get-color("light-primary");
 
-    @include mx.mq('lg') {
+    @include mx.mq("lg") {
       margin-bottom: 16px;
     }
   }
 }
 
-.welcome-btn {
-}
+// .welcome-btn {
+//   background-color: aqua;
+// }

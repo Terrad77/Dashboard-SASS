@@ -1,12 +1,13 @@
-@use '../utils/placeholders';
-@use '../utils/variables' as var;
-@use '../utils/functions' as fn;
-@use '../utils/mixins' as mx;
+@use "../utils/placeholders";
+@use "../utils/variables" as var;
+@use "../utils/functions" as fn;
+@use "../utils/mixins" as mx;
 
+// мапа з парами ключ-значення для data-status
 $reports-status: (
-  'success': 'up',
-  'warning': 'dash',
-  'danger': 'down',
+  "success": "up",
+  "warning": "dash",
+  "danger": "down",
 );
 
 .reports {
@@ -15,32 +16,34 @@ $reports-status: (
   grid-area: reports;
 
   min-width: 340px;
-  background-color: fn.get-color('dark-tertiary');
+  background-color: fn.get-color("dark-tertiary");
 }
 .reports-title {
   @extend %details;
 
   margin-bottom: 36px;
-  color: fn.get-color('light-secondary');
+  color: fn.get-color("light-secondary");
 
   span {
     @extend %accent-text;
-    color: fn.get-color('light-primary');
+    color: fn.get-color("light-primary");
   }
 }
+// li у списку reports-list
 .reports-item {
   display: flex;
   align-items: center;
   gap: 30px;
 
-  @include mx.mq('md') {
+  @include mx.mq("md") {
     gap: 32px;
   }
-
+  // всім окрім останнього елемента item
   &:not(:last-child) {
     margin-bottom: 28px;
   }
 }
+//іконки
 .reports-staff {
   flex-grow: 1;
   flex-shrink: 0;
@@ -50,24 +53,27 @@ $reports-status: (
   align-items: center;
   gap: 16px;
 }
+// div - обгортка для img ( staff-avatar)
 .staff-thumb {
   @include mx.frame(32px, $is-circle: true);
 }
+//ім'я робітника
 .staff-caption {
   @extend %details;
 
-  color: fn.get-color('light-secondary');
+  color: fn.get-color("light-secondary");
 }
+// індикатор прогресу
 .reports-bar {
   width: calc(100% - 224px);
   height: 4px;
-
+  // застосовується, коли у reports-bar в HTML є атрибут value
   &[value] {
     border-radius: 2px;
   }
-
+  // перебір мапи reports-status де $key=success, warning, danger
   @each $key, $value in $reports-status {
-    [data-status='#{$value}'] & {
+    [data-status="#{$value}"] & {
       // Mozilla browser
       &[value] {
         background-color: rgba(fn.get-color($key), 0.3);
@@ -97,17 +103,19 @@ $reports-status: (
   padding: 4px;
 
   border-radius: 4px;
-
+  //для тегу use приховуємо всі вставлені у svg (reports-icon) іконки
   use {
     opacity: 0;
-    fill: fn.get-color('light-primary');
+    fill: fn.get-color("light-primary");
   }
 
   @each $key, $value in $reports-status {
-    [data-status='#{$value}'] & {
-      background-color: fn.get-color($key);
+    //як що li (предок "reports-item") має атрибут value, тоді нащадок ("reports-icon") отримує оформлення
+    [data-status="#{$value}"] & {
+      background-color: fn.get-color($key); // svg отримує колір по key
 
       .#{$value} {
+        //відображаємо внутрішній елемент, сгенерований як назва класу (<use class="up dash down">) залежно від data-status
         opacity: 1;
       }
     }

@@ -1,7 +1,7 @@
-@use '../utils/placeholders';
-@use '../utils/variables' as var;
-@use '../utils/functions' as fn;
-@use '../utils/mixins' as mx;
+@use "../utils/placeholders";
+@use "../utils/variables" as var;
+@use "../utils/functions" as fn;
+@use "../utils/mixins" as mx;
 
 .tasks {
   @extend %section-frame;
@@ -11,27 +11,27 @@
   min-width: 340px;
   max-height: 420px;
 
-  background-color: fn.get-color('dark-tertiary');
+  background-color: fn.get-color("dark-tertiary");
 }
 .tasks-title {
   @extend %details;
 
   margin-bottom: 36px;
-  color: fn.get-color('light-secondary');
+  color: fn.get-color("light-secondary");
 
   span {
     @extend %accent-text;
-    color: fn.get-color('light-primary');
+    color: fn.get-color("light-primary");
   }
 }
 .tasks-list {
   @include mx.scroll-bar;
 
   max-height: 288px;
-  overflow: auto;
+  overflow: auto; //приховуємо все, що за межами списку
 
-  @include mx.mq('lg') {
-    margin-right: -14px;
+  @include mx.mq("lg") {
+    margin-right: -14px; // компенсатор позиції кастомного scroll-bar (@mixin scroll-bar)
   }
 }
 .tasks-item {
@@ -41,10 +41,10 @@
 
   padding: 16px 8px;
   border-top: 1px solid;
-  border-color: fn.get-color('light-tertiary');
+  border-color: fn.get-color("light-tertiary");
 }
 .tasks-checkbox {
-  flex-shrink: 0;
+  flex-shrink: 0; // заборона стискання
 
   display: flex;
   align-items: center;
@@ -52,56 +52,59 @@
 
   width: 20px;
   height: 20px;
-  cursor: pointer;
+  cursor: pointer; // для контролерів mouse | touchpad
 }
 .tasks-checkbox-icon {
-  @include mx.ease('fast', fill, background-color, border-color);
+  @include mx.ease("fast", fill, background-color, border-color);
 
-  fill: fn.get-color('transparent');
+  fill: fn.get-color("transparent");
   border: 1px solid;
-  border-color: fn.get-color('light-tertiary');
+  border-color: fn.get-color("light-tertiary");
   border-radius: 4px;
 
+  // елемент checked
   .tasks-input:checked + & {
-    fill: fn.get-color('light-primary');
-    background-color: fn.get-color('accent-primary');
-    border-color: fn.get-color('transparent');
+    fill: fn.get-color("light-primary");
+    background-color: fn.get-color("accent-primary");
+    border-color: fn.get-color("transparent");
   }
-
+  // елемент доступності для стану явного перемикання через Tab
   .tasks-input:focus-visible + & {
     outline: 2px solid;
-    outline-color: fn.get-color('light-tertiary');
+    outline-color: fn.get-color("light-tertiary");
     outline-offset: 2px;
   }
 }
+//текст таски
 .tasks-info {
   flex-grow: 1;
 }
 .tasks-heading {
   @extend %details;
 
-  color: fn.get-color('light-primary');
+  color: fn.get-color("light-primary");
 }
 .tasks-desc {
   @extend %details;
 
-  color: fn.get-color('light-secondary');
+  color: fn.get-color("light-secondary");
 }
 .tasks-btn {
-  @include mx.ease('fast', outline);
+  @include mx.ease("fast", outline);
 
   width: 20px;
   height: 20px;
-  color: fn.get-color('light-tertiary');
+  color: fn.get-color("light-tertiary");
   border-radius: 50%;
 
   &:focus-visible {
     outline: 2px solid;
-    outline-color: rgba(fn.get-color('light-tertiary'), 0.6);
+    // вбудована SASS функція rgba, дозволяє додати прозорість до коліру
+    outline-color: rgba(fn.get-color("light-tertiary"), 0.6);
     outline-offset: 3px;
   }
 
   &-icon {
-    fill: fn.get-color('current');
+    fill: fn.get-color("current");
   }
 }

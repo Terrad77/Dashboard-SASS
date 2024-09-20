@@ -1,14 +1,14 @@
-@use '../../utils/placeholders';
-@use '../../utils/variables' as var;
-@use '../../utils/functions' as fn;
-@use '../../utils/mixins' as mx;
+@use "../../utils/placeholders";
+@use "../../utils/variables" as var;
+@use "../../utils/functions" as fn;
+@use "../../utils/mixins" as mx;
 
 .co-workers {
   grid-area: co-workers;
 
-  @include mx.mq('xl') {
+  @include mx.mq("xl") {
     padding: 20px;
-    background-color: fn.get-color('dark-tertiary');
+    background-color: fn.get-color("dark-tertiary");
     border-radius: 12px;
   }
 }
@@ -19,13 +19,13 @@
   margin-bottom: 40px;
 
   border-radius: 12px;
-  background-color: fn.get-color('dark-tertiary');
+  background-color: fn.get-color("dark-tertiary");
 
-  @include mx.mq('xl') {
+  @include mx.mq("xl") {
     max-height: 400px;
     padding: 24px;
     margin-bottom: 32px;
-    background-color: fn.get-color('dark-secondary');
+    background-color: fn.get-color("dark-secondary");
   }
 }
 
@@ -34,7 +34,7 @@
 
   margin-bottom: 28px;
 
-  @include mx.mq('xl') {
+  @include mx.mq("xl") {
     margin-bottom: 36px;
   }
 
@@ -50,7 +50,7 @@
 
   overflow-y: auto;
 
-  @include mx.mq('lg') {
+  @include mx.mq("lg") {
     margin-right: -14px;
   }
 }

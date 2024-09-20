@@ -1,22 +1,22 @@
-@use '../utils/placeholders';
-@use '../utils/variables' as var;
-@use '../utils/functions' as fn;
-@use '../utils/mixins' as mx;
+@use "../utils/placeholders";
+@use "../utils/variables" as var;
+@use "../utils/functions" as fn;
+@use "../utils/mixins" as mx;
 
 .search-field {
-  @include mx.ease('fast', width, color);
+  @include mx.ease("fast", width, color);
 
   display: inline-flex;
   align-items: center;
 
-  color: fn.get-color('light-tertiary');
+  color: fn.get-color("light-tertiary");
   overflow: hidden;
-
+  // псевдоклас для стилізації наповнення елемента у фокусі
   &:focus-within {
-    color: fn.get-color('light-primary');
+    color: fn.get-color("light-primary");
   }
 
-  @include mx.mq('lg', 'max') {
+  @include mx.mq("lg", "max") {
     width: 30px;
 
     &:focus-within {
@@ -24,13 +24,13 @@
     }
   }
 
-  @include mx.mq('lg') {
+  @include mx.mq("lg") {
     margin-right: auto;
   }
 }
 .search-icon {
   flex-shrink: 0;
-  fill: fn.get-color('current');
+  fill: fn.get-color("current");
 
   margin-right: 12px;
 }
@@ -40,8 +40,8 @@
   min-width: 165px;
   min-height: 20px;
 
-  @include mx.mq('lg', 'max') {
-    @include mx.ease('fast', opacity);
+  @include mx.mq("lg", "max") {
+    @include mx.ease("fast", opacity);
     opacity: 0;
 
     &:focus {

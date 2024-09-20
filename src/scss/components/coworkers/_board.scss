@@ -1,7 +1,7 @@
-@use '../../utils/placeholders';
-@use '../../utils/variables' as var;
-@use '../../utils/functions' as fn;
-@use '../../utils/mixins' as mx;
+@use "../../utils/placeholders";
+@use "../../utils/variables" as var;
+@use "../../utils/functions" as fn;
+@use "../../utils/mixins" as mx;
 
 .board {
   display: flex;
@@ -17,32 +17,32 @@
   justify-content: space-between;
   gap: 43px;
 
-  background-color: fn.get-color('dark-tertiary');
+  background-color: fn.get-color("dark-tertiary");
 
-  @include mx.mq('xl') {
-    background-color: fn.get-color('dark-secondary');
+  @include mx.mq("xl") {
+    background-color: fn.get-color("dark-secondary");
   }
 
   &.hide {
     display: none;
   }
 }
-.board-left {
-}
+// .board-left {
+// }
 .board-caption {
   @extend %accent-text;
 
   margin-bottom: 8px;
-  color: fn.get-color('light-primary');
+  color: fn.get-color("light-primary");
 }
 .board-details {
   @extend %details;
 
   margin-bottom: 20px;
-  color: fn.get-color('light-secondary');
+  color: fn.get-color("light-secondary");
 }
-.board-coworker {
-}
+// .board-coworker {
+// }
 .person {
   display: flex;
   align-items: center;
@@ -51,8 +51,8 @@
 .person-thumb {
   @include mx.frame(24px, $is-circle: true);
 }
-.person-avatar {
-}
+// .person-avatar {
+// }
 .person-caption {
   @extend %details;
 }
@@ -66,5 +66,5 @@
 
   margin-bottom: auto;
   text-align: right;
-  color: fn.get-color('light-secondary');
+  color: fn.get-color("light-secondary");
 }

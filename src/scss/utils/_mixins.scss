@@ -8,11 +8,11 @@
 @mixin mq($bp: sm, $type: min, $is-retina: false) {
   // перевірка чи  має map "$breakpoints" key = "$bp"
   @if map.has-key(var.$breakpoints, $bp) {
-    // імпортуємо в змінну $width значення з map
+    // імпортуємо в змінну $width значення з map $breakpoints
     $width: map.get(var.$breakpoints, $bp);
     // for change media query
     @if $type == max {
-      // отримаємо наближенне значення width
+      // отримаємо наближенне значення до width
       $width: $width - 0.02px;
     }
     // формуємо медіа-запит
@@ -33,7 +33,7 @@
   }
 }
 
-// міксин для зміни border-radius та розмірів
+// міксин для зміни border-radius та розмірів рамки
 @mixin frame($width, $height: $width, $is-circle: false) {
   width: $width;
   height: $height;
